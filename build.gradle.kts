@@ -16,10 +16,11 @@ fun getExtraString(name: String) = ext[name]?.toString()!!
 nexusPublishing {
     val ossrhUsername = getExtraString("ossrhUsername")
     val ossrhPassword = getExtraString("ossrhPassword")
+    val ossrhStagingProfileId = getExtraString("ossrhStagingProfileId")
 
     repositories {
         sonatype {
-            stagingProfileId.set(properties["sonatypeStagingProfileId"].toString())
+            stagingProfileId.set(ossrhStagingProfileId)
             username.set(ossrhUsername)
             password.set(ossrhPassword)
         }
