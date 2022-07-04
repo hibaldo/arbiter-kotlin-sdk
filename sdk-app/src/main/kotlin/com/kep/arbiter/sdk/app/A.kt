@@ -4,6 +4,7 @@ fun main() {
     A().test()
 }
 
+//
 class A {
     fun test() {
         println(TEST_STR)
