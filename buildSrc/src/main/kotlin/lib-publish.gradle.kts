@@ -27,7 +27,7 @@ publishing {
             pom {
                 name.set("Arbiter kotlin server SDK")
                 description.set("Arbiter AB Experiment server-side SDK for JVM (java, kotlin)")
-                url.set("https://github.com/kakaoenterprise/arbiter-kotlin-sdk")
+                url.set("https://github.com/hibaldo/arbiter-kotlin-sdk")
                 inceptionYear.set("2022")
                 licenses {
                     license {
@@ -36,15 +36,8 @@ publishing {
                         distribution.set("repo")
                     }
                 }
-                developers {
-                    developer {
-                        id.set("kakaoenterprise")
-                        name.set("kakaoenterprise")
-                        email.set("insight.service@kakaoenterprise.com")
-                    }
-                }
                 scm {
-                    url.set("https://github.com/kakaoenterprise/arbiter-kotlin-sdk")
+                    url.set("https://github.com/hibaldo/arbiter-kotlin-sdk")
                 }
             }
         }
