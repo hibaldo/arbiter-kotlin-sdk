@@ -1,4 +1,6 @@
-package com.kep.arbiter.sdk.app
+package io.github.hibaldo.sdk.app
+
+import io.github.hibaldo.sdk.core.TEST_STR
 
 fun main() {
     A().test()

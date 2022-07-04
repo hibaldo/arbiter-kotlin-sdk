@@ -27,9 +27,6 @@ nexusPublishing {
 }
 
 allprojects {
-    group = "com.kep.arbiter.sdk"
-    version = "0.0.1-SNAPSHOT"
-
     repositories {
         mavenCentral()
     }

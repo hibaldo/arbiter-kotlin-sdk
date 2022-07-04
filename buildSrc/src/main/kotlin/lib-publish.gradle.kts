@@ -6,7 +6,7 @@ plugins {
     id("signing")
 }
 
-group = "com.kep.arbiter.sdk"
+group = "io.github.hibaldo"
 version = "0.0.1-SNAPSHOT"
 
 repositories {
