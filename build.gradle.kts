@@ -7,32 +7,11 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
-val targetProjectName: String by project
-group = "io.github.hibaldo"
-version = Versions.jarVersion[targetProjectName]
-
 val secretPropsFile = project.rootProject.file("local.properties")
 secretPropsFile.reader().use { Properties().apply { load(it) } }
     .onEach { (k,v) -> ext[k.toString()] = v }
 
 fun getExtraString(name: String) = ext[name]?.toString()!!
-
-nexusPublishing {
-    val ossrhUsername = getExtraString("ossrhUsername")
-    val ossrhPassword = getExtraString("ossrhPassword")
-    val ossrhStagingProfileId = getExtraString("ossrhStagingProfileId")
-
-    repositoryDescription.set("${group}:${targetProjectName}:${version}")
-    repositories {
-        sonatype {
-            stagingProfileId.set(ossrhStagingProfileId)
-            username.set(ossrhUsername)
-            password.set(ossrhPassword)
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-        }
-    }
-}
 
 allprojects {
     repositories {
@@ -71,5 +50,26 @@ subprojects {
 
     tasks.withType<Test> {
         useJUnitPlatform()
+    }
+}
+
+val targetProjectName: String by project
+group = "io.github.hibaldo"
+version = Versions.jarVersion[targetProjectName]
+
+nexusPublishing {
+    val ossrhUsername = getExtraString("ossrhUsername")
+    val ossrhPassword = getExtraString("ossrhPassword")
+    val ossrhStagingProfileId = getExtraString("ossrhStagingProfileId")
+
+    repositoryDescription.set("${group}:${targetProjectName}:${version}")
+    repositories {
+        sonatype {
+            stagingProfileId.set(ossrhStagingProfileId)
+            username.set(ossrhUsername)
+            password.set(ossrhPassword)
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+        }
     }
 }
