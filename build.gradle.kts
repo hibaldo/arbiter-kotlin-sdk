@@ -55,7 +55,7 @@ subprojects {
 
 val targetProjectName: String by project
 group = "io.github.hibaldo"
-version = Versions.jarVersion[targetProjectName]
+version = Versions.jarVersion[targetProjectName]!!
 
 nexusPublishing {
     val ossrhUsername = getExtraString("ossrhUsername")
