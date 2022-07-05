@@ -7,7 +7,6 @@ plugins {
 }
 
 group = "io.github.hibaldo"
-version = "0.0.1-SNAPSHOT"
 
 repositories {
     mavenCentral()
@@ -26,6 +25,7 @@ publishing {
             groupId = project.group.toString()
             artifactId = project.name
             version = project.version.toString()
+            description = "hibaldo-test"
 
             from(components["java"])
             pom {
@@ -38,6 +38,13 @@ publishing {
                         name.set("The Apache License, Version 2.0")
                         url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                         distribution.set("repo")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("hibaldo")
+                        name.set("hibaldo")
+                        email.set("hibaldo@naver.com")
                     }
                 }
                 scm {
