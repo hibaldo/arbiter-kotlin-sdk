@@ -7,6 +7,10 @@ plugins {
     id("io.github.gradle-nexus.publish-plugin") version "1.1.0"
 }
 
+val targetProjectName: String by project
+group = "io.github.hibaldo"
+version = Versions.jarVersion[targetProjectName]
+
 val secretPropsFile = project.rootProject.file("local.properties")
 secretPropsFile.reader().use { Properties().apply { load(it) } }
     .onEach { (k,v) -> ext[k.toString()] = v }
@@ -18,6 +22,7 @@ nexusPublishing {
     val ossrhPassword = getExtraString("ossrhPassword")
     val ossrhStagingProfileId = getExtraString("ossrhStagingProfileId")
 
+    repositoryDescription.set("${group}:${targetProjectName}:${version}")
     repositories {
         sonatype {
             stagingProfileId.set(ossrhStagingProfileId)

@@ -6,8 +6,6 @@ plugins {
     id("signing")
 }
 
-group = "io.github.hibaldo"
-
 repositories {
     mavenCentral()
 }
@@ -22,9 +20,9 @@ java {
 publishing {
     publications {
         create<MavenPublication>("sdk") {
-            groupId = project.group.toString()
+            groupId = rootProject.group.toString()
             artifactId = project.name
-            version = project.version.toString()
+            version = Versions.jarVersion[project.name]
             description = "hibaldo-test"
 
             from(components["java"])
